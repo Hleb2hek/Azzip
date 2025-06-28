@@ -1,13 +1,26 @@
+import React from 'react'
+
 function Categories() {
+	const [activeId, setActiveId] = React.useState(0);
+
+	const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
+
+	function handleClick(i, active, set) {
+		if (active === i) {
+			set(null)
+		} else {
+			set(i)
+		}
+	}
+
 	return (
 		<div className="categories">
 			<ul>
-				<li className="active">Все</li>
-				<li>Мясные</li>
-				<li>Вегетарианская</li>
-				<li>Гриль</li>
-				<li>Острые</li>
-				<li>Закрытые</li>
+				{categories.map((value, id) => (
+					<li onClick={() => handleClick(id, activeId, setActiveId)} className={activeId === id ? 'active' : ''}>
+						{value}
+					</li>
+				))}
 			</ul>
 		</div>
 	)
