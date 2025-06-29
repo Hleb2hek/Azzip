@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
 import handleClick from "./func";
 
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
 
-	const [activeType, setActiveType] = React.useState(0);
-	const [activeSize, setActiveSize] = React.useState(0);
+	const [activeType, setActiveType] = useState(0);
+	const [activeSize, setActiveSize] = useState(0);
 
 	const typesName = ['тонкое', 'традиционное'];
 
@@ -21,7 +21,11 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
 				<ul>
 					{
 						types.map((typeId) => (
-							<li key={typeId} onClick={() => handleClick(typeId, activeType, setActiveType)} className={activeType === typeId ? 'active' : ''}>
+							<li
+								key={typeId}
+								onClick={() => handleClick(typeId, activeType, setActiveType)}
+								className={activeType === typeId ? 'active' : ''}
+							>
 								{typesName[typeId]}
 							</li>
 						))
@@ -29,7 +33,10 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
 				</ul>
 				<ul>
 					{sizes.map((size, i) => (
-						<li key={i} onClick={() => handleClick(i, activeSize, setActiveSize)} className={activeSize === i ? 'active' : ''}>
+						<li key={i}
+							onClick={() => handleClick(i, activeSize, setActiveSize)}
+							className={activeSize === i ? 'active' : ''}
+						>
 							{size} см.
 						</li>
 					))}

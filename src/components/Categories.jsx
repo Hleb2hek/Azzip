@@ -11,7 +11,10 @@ function Categories() {
 		<div className="categories">
 			<ul>
 				{categories.map((value, id) => (
-					<li key={id} onClick={() => handleClick(id, activeId, setActiveId)} className={activeId === id ? 'active' : ''}>
+					<li key={id}
+						onClick={() => handleClick(id, activeId, setActiveId)}
+						className={activeId === id ? 'active' : ''}
+					>
 						{value}
 					</li>
 				))}
