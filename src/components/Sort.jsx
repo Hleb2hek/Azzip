@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 function Sort() {
 
-	const [] = Rea
+	const [open,setOpen] = useState(false)
 
 	return (
 		<div className="sort">
