@@ -1,19 +1,13 @@
 import React from "react";
 
+import handleClick from "./func";
+
 function PizzaBlock({ title, price, imageUrl, sizes, types }) {
 
 	const [activeType, setActiveType] = React.useState(0);
 	const [activeSize, setActiveSize] = React.useState(0);
 
 	const typesName = ['тонкое', 'традиционное'];
-
-	function handleClick(i, active, set) {
-		if (active === i) {
-			set(null)
-		} else {
-			set(i)
-		}
-	}
 
 	return (
 		<div className="pizza-block">
@@ -27,7 +21,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
 				<ul>
 					{
 						types.map((typeId) => (
-							<li onClick={() => handleClick(typeId, activeType, setActiveType)} className={activeType === typeId ? 'active' : ''}>
+							<li key={typeId} onClick={() => handleClick(typeId, activeType, setActiveType)} className={activeType === typeId ? 'active' : ''}>
 								{typesName[typeId]}
 							</li>
 						))
@@ -35,7 +29,7 @@ function PizzaBlock({ title, price, imageUrl, sizes, types }) {
 				</ul>
 				<ul>
 					{sizes.map((size, i) => (
-						<li onClick={() => handleClick(i, activeSize, setActiveSize)} className={activeSize === i ? 'active' : ''}>
+						<li key={i} onClick={() => handleClick(i, activeSize, setActiveSize)} className={activeSize === i ? 'active' : ''}>
 							{size} см.
 						</li>
 					))}
